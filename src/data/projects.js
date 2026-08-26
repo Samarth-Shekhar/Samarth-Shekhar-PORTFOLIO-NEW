@@ -30,7 +30,7 @@ export const projects = [
       "Docker",
     ],
     github: "https://github.com/Samarth-Shekhar/Multi-Agent-Orchestration-System",
-    liveDemo: "",
+    liveDemo: "https://ai-meal-recipe-planner.streamlit.app/",
     caseStudy: {
       overview:
         "A multi-agent AI workflow system that orchestrates specialized agents to automate complex tasks through intelligent planning, retrieval, execution, and evaluation pipelines.",
