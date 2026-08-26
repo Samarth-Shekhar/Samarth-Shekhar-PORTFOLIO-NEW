@@ -1,4 +1,4 @@
-function ProjectVisual({ type }) {
+function ProjectVisual({ type, image }) {
   if (type === 'multi-agent') {
     return (
       <div className="project-visual project-visual--agent">

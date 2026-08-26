@@ -1,11 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
-  --display: 'Anton', sans-serif; --body: 'Manrope', sans-serif; --mono: 'DM Mono', monospace;
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 :root {
   --paper: #ebeae8; --ink: #090705; --red: #ca1105; --wine: #4a312d;
   --line: rgba(9, 7, 5, .2); --soft-line: rgba(9, 7, 5, .1);
-  --display: 'Space Grotesk', sans-serif; --body: 'Manrope', sans-serif; --mono: 'DM Mono', monospace;
+  --display: 'Anton', sans-serif; --body: 'Manrope', sans-serif; --mono: 'DM Mono', monospace;
   --pad: clamp(20px, 4.5vw, 72px); --ease: cubic-bezier(.2, .8, .2, 1);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
