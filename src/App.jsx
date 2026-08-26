@@ -2,31 +2,25 @@ import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar.jsx'
 import Hero from './components/Hero.jsx'
 import About from './components/About.jsx'
-import StatsSection from './components/StatsSection.jsx'
-import WhatIBuild from './components/WhatIBuild.jsx'
-import CaseStudySection from './components/CaseStudySection.jsx'
-import Experience from './components/Experience.jsx'
-import Projects from './components/Projects.jsx'
-import ProjectModal from './components/ProjectModal.jsx'
-import AISection from './components/AISection.jsx'
-import SoftwareSection from './components/SoftwareSection.jsx'
-import DataSection from './components/DataSection.jsx'
-import ProductSection from './components/ProductSection.jsx'
-import Skills from './components/Skills.jsx'
-import TechStack from './components/TechStack.jsx'
-import Certifications from './components/Certifications.jsx'
-import Education from './components/Education.jsx'
+import WhatIWorkAcross from './components/WhatIWorkAcross.jsx'
+import SelectedWork from './components/SelectedWork.jsx'
+import ExperienceEditorial from './components/ExperienceEditorial.jsx'
+import ToolsIUse from './components/ToolsIUse.jsx'
+import HowIThink from './components/HowIThink.jsx'
+import Learning from './components/Learning.jsx'
+import EducationEditorial from './components/EducationEditorial.jsx'
 import FAQSection from './components/FAQSection.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
+import CaseStudyOverlay from './components/CaseStudyOverlay.jsx'
 
 function App() {
   const [selectedProject, setSelectedProject] = useState(null)
 
   useEffect(() => {
     const observerOptions = {
-      threshold: 0.08,
-      rootMargin: '0px 0px -50px 0px',
+      threshold: 0.06,
+      rootMargin: '0px 0px -40px 0px',
     }
 
     const observer = new IntersectionObserver((entries) => {
@@ -55,30 +49,24 @@ function App() {
   }, [selectedProject])
 
   return (
-    <div className="app">
+    <div className="app ed-theme">
       <Navbar />
-      <main>
+      <main role="main">
         <Hero />
         <About />
-        <StatsSection />
-        <WhatIBuild />
-        <CaseStudySection onProjectClick={setSelectedProject} />
-        <Projects onProjectClick={setSelectedProject} />
-        <Experience />
-        <AISection />
-        <SoftwareSection />
-        <DataSection />
-        <ProductSection />
-        <Skills />
-        <TechStack />
-        <Certifications />
-        <Education />
+        <WhatIWorkAcross />
+        <SelectedWork onProjectClick={setSelectedProject} />
+        <ExperienceEditorial />
+        <ToolsIUse />
+        <HowIThink />
+        <Learning />
+        <EducationEditorial />
         <FAQSection />
         <Contact />
       </main>
       <Footer />
       {selectedProject && (
-        <ProjectModal
+        <CaseStudyOverlay
           project={selectedProject}
           onClose={() => setSelectedProject(null)}
         />

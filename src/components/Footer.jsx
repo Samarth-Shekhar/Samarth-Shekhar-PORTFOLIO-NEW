@@ -1,67 +1,45 @@
 function Footer() {
   return (
-    <footer className="footer" role="contentinfo">
-      <div className="footer__container">
-        <div className="footer__top-bar">
-          <div className="footer__brand-col">
-            <span className="footer__logo">SAMARTH SHEKHAR</span>
-            <span className="footer__tagline">SOFTWARE &bull; AI &bull; PRODUCT</span>
-            <p className="footer__bio">
-              B.Tech IT graduate passionate about software development, AI systems, and product execution.
-            </p>
+    <footer className="ed-footer" role="contentinfo">
+      <div className="ed-footer__container">
+        <div className="ed-footer__top">
+          <div className="footer-left">
+            <span className="footer-brand">SAMARTH SHEKHAR</span>
+            <span className="footer-tagline">SOFTWARE &bull; AI &bull; PRODUCT</span>
           </div>
 
-          <div className="footer__links-col">
-            <h4 className="footer__col-title">NAVIGATION</h4>
-            <a href="#about" className="footer__link">About</a>
-            <a href="#projects" className="footer__link">Projects</a>
-            <a href="#experience" className="footer__link">Experience</a>
-            <a href="#skills" className="footer__link">Skills</a>
-            <a href="#contact" className="footer__link">Contact</a>
-          </div>
-
-          <div className="footer__links-col">
-            <h4 className="footer__col-title">ROLES</h4>
-            <span className="footer__link-text">Full Stack Developer</span>
-            <span className="footer__link-text">Software Engineer</span>
-            <span className="footer__link-text">AI / GenAI Developer</span>
-            <span className="footer__link-text">Product / Project PM</span>
-          </div>
-
-          <div className="footer__links-col">
-            <h4 className="footer__col-title">CONNECT</h4>
+          <div className="footer-right">
             <a
-              href="https://github.com/Samarth-Shekhar"
+              href="https://github.com/Samarth-Shekharadd"
               target="_blank"
               rel="noopener noreferrer"
-              className="footer__link"
+              className="footer-link"
             >
-              GitHub ↗
+              GitHub
             </a>
             <a
               href="https://www.linkedin.com/in/samarth-shekhar-185ba311a"
               target="_blank"
               rel="noopener noreferrer"
-              className="footer__link"
+              className="footer-link"
             >
-              LinkedIn ↗
+              LinkedIn
             </a>
-            <a href="tel:+919650754598" className="footer__link">
-              +91 9650754598
-            </a>
-            <a href="mailto:samarthshekhar.work@gmail.com" className="footer__link">
+            <a
+              href="mailto:samarthshekhar.work@gmail.com"
+              className="footer-link"
+            >
               Email
             </a>
           </div>
         </div>
 
-        <div className="footer__bottom-row">
-          <p className="footer__copyright">&copy; 2026 Samarth Shekhar. All rights reserved.</p>
-          <p className="footer__location">Noida / Delhi NCR, India</p>
+        <div className="ed-footer__bottom">
+          <span className="copyright">&copy; 2026 Samarth Shekhar</span>
+          <span className="location">Noida / Delhi NCR, India</span>
         </div>
 
-        {/* Giant Outlined Watermark Title from Reference Design */}
-        <div className="footer__watermark" aria-hidden="true">
+        <div className="ed-footer__watermark" aria-hidden="true">
           SAMARTH SHEKHAR
         </div>
       </div>

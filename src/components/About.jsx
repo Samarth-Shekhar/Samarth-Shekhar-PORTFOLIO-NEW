@@ -1,60 +1,40 @@
 function About() {
-  const cards = [
-    { number: '01', title: 'SOFTWARE', desc: 'Frontend and full-stack development.' },
-    { number: '02', title: 'AI', desc: 'LLMs, RAG and AI-powered applications.' },
-    { number: '03', title: 'DATA', desc: 'Python, SQL and data analysis.' },
-    { number: '04', title: 'PRODUCT', desc: 'Requirements, Agile execution and project coordination.' },
-  ]
-
-  const interests = [
-    'Software Development',
-    'Full Stack',
-    'Frontend',
+  const exploringItems = [
+    'Software',
     'AI / GenAI',
+    'Full Stack',
     'Data',
-    'Product & Project Management',
+    'Product',
   ]
 
   return (
-    <section id="about" className="about section" aria-labelledby="about-heading">
-      <div className="section__container">
-        <div className="section__header reveal-on-scroll">
-          <div className="section__badge">
-            <span className="section__badge-icon">●</span>
-            <span className="section__badge-text">ABOUT</span>
+    <section id="about" className="ed-about section" aria-labelledby="about-heading">
+      <div className="ed-about__container">
+        {/* Editorial Section Number */}
+        <div className="ed-section-num reveal-on-scroll">01</div>
+
+        <div className="ed-about__grid">
+          <div className="ed-about__main reveal-on-scroll">
+            <span className="ed-about__label">A LITTLE ABOUT ME</span>
+            <h2 id="about-heading" className="ed-about__headline">
+              "I like building things that sit somewhere between technology and people."
+            </h2>
+            <p className="ed-about__text">
+              I'm a B.Tech IT graduate with experience across frontend development, AI automation, technical projects, data workflows and Agile execution.
+            </p>
           </div>
-          <h2 id="about-heading" className="section__title">A LITTLE ABOUT ME</h2>
-        </div>
 
-        <div className="about__content reveal-on-scroll">
-          <p className="about__text" style={{ marginBottom: '20px' }}>
-            I’m a B.Tech IT graduate with a genuine curiosity for both technology and how people use it.
-          </p>
-          <p className="about__text" style={{ marginBottom: '20px' }}>
-            My experience has taken me from building frontend applications and working with APIs to experimenting with LLMs, RAG, AI automation, and multi-agent systems. I’ve also had opportunities to work around Agile workflows, requirements, documentation, and project coordination.
-          </p>
-          <p className="about__text" style={{ marginBottom: '32px' }}>
-            I’m still learning, building, and figuring things out — but that’s what I enjoy most about technology. Give me a problem, and I like digging into it until I can turn it into something that actually works.
-          </p>
-
-          <div className="about__interests">
-            <span className="about__interests-label">Currently interested in:</span>
-            <div className="about__interests-tags">
-              {interests.map((interest) => (
-                <span key={interest} className="about__interest-tag">{interest}</span>
+          <div className="ed-about__side reveal-on-scroll">
+            <span className="side-title">CURRENTLY EXPLORING</span>
+            <ul className="exploring-list">
+              {exploringItems.map((item, idx) => (
+                <li key={item} className="exploring-item">
+                  <span className="item-num">0{idx + 1}</span>
+                  <span className="item-name">{item}</span>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
-        </div>
-
-        <div className="about__cards">
-          {cards.map((card, index) => (
-            <div key={card.number} className="about__card reveal-on-scroll" style={{ animationDelay: `${index * 0.1}s` }}>
-              <span className="about__card-number">{card.number}</span>
-              <h3 className="about__card-title">{card.title}</h3>
-              <p className="about__card-desc">{card.desc}</p>
-            </div>
-          ))}
         </div>
       </div>
     </section>
