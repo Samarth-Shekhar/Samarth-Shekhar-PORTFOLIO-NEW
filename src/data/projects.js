@@ -5,8 +5,7 @@ export const projects = [
     title: "MULTI-AGENT ORCHESTRATION SYSTEM",
     subtitle: "AI Workflow Platform",
     category: "AI",
-    description:
-      "A multi-agent AI workflow system designed to automate complex tasks using specialized agents.",
+    description: "A multi-agent system for planning and automating complex tasks.",
     features: [
       "Planner agent",
       "Retriever agent",
@@ -29,8 +28,9 @@ export const projects = [
       "Pydantic",
       "Docker",
     ],
-    github: "https://github.com/Samarth-Shekhar/Multi-Agent-Orchestration-System",
-    liveDemo: "https://ai-meal-recipe-planner.streamlit.app/",
+    github: "https://github.com/Samarth-Shekhar/Multi-Agent-Orchestration-System-Project",
+    liveDemo: "",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=85",
     caseStudy: {
       overview:
         "A multi-agent AI workflow system that orchestrates specialized agents to automate complex tasks through intelligent planning, retrieval, execution, and evaluation pipelines.",
@@ -50,8 +50,7 @@ export const projects = [
     title: "FOLATE — AI WEB APPLICATION GENERATOR",
     subtitle: "AI-Powered Web Generator",
     category: "AI",
-    description:
-      "An AI-powered application that converts natural-language prompts into responsive web experiences.",
+    description: "A prompt-to-interface tool for generating responsive web experiences.",
     features: [
       "Natural-language input",
       "AI-assisted generation",
@@ -62,8 +61,9 @@ export const projects = [
       "User-focused interface",
     ],
     technologies: ["Node.js", "Express.js", "LangChain", "OpenAI API"],
-    github: "https://github.com/Samarth-Shekhar/Folate",
+    github: "https://github.com/Samarth-Shekhar/folate",
     liveDemo: "http://folate.pro",
+    image: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1400&q=85",
     caseStudy: {
       overview:
         "An AI-powered application that takes natural-language descriptions and generates responsive web applications, bridging the gap between idea and implementation.",
@@ -83,8 +83,7 @@ export const projects = [
     title: "AI MEAL PLANNER & RECIPE GENERATOR",
     subtitle: "AI-Powered Nutrition App",
     category: "AI",
-    description:
-      "An AI-powered application that generates personalized meal plans and recipes based on user preferences.",
+    description: "A recipe planner that builds meals around personal preferences.",
     features: [
       "Personalized recommendations",
       "Prompt engineering",
@@ -93,8 +92,9 @@ export const projects = [
       "User-focused workflows",
     ],
     technologies: ["Python", "LangChain", "OpenAI API", "Pandas", "NumPy"],
-    github: "https://github.com/Samarth-Shekhar/AI-Meal-Planner",
-    liveDemo: "",
+    github: "https://github.com/Samarth-Shekhar/AI-MEAL-RECIPE-PLANNER",
+    liveDemo: "https://ai-meal-recipe-planner.streamlit.app/",
+    image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1400&q=85",
     caseStudy: {
       overview:
         "An AI-powered meal planning application that generates personalized meal plans and recipes tailored to user dietary preferences, restrictions, and goals.",
@@ -114,8 +114,7 @@ export const projects = [
     title: "COLLABORATIVE VIDEO SHARING PLATFORM",
     subtitle: "Full-Stack Web Application",
     category: "SOFTWARE",
-    description:
-      "A collaborative web application focused on role-based workflows, content management and user interaction.",
+    description: "A secure handoff tool for creators and editors to manage YouTube uploads.",
     features: [
       "Role-based workflows",
       "User interaction",
@@ -124,19 +123,20 @@ export const projects = [
       "Project execution",
     ],
     technologies: ["React.js", "Node.js", "Express.js", "MongoDB"],
-    github: "https://github.com/Samarth-Shekhar/Collaborative-Video-Sharing",
+    github: "https://github.com/Samarth-Shekhar/Collaborative-Video-Sharing-Platform",
     liveDemo: "",
+    image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1400&q=85",
     caseStudy: {
       overview:
-        "A collaborative video sharing platform with role-based access control, content management, and user interaction features.",
+        "A secure handoff space for YouTube creators and editors.",
       problem:
         "Content sharing platforms need structured workflows where different users have different permissions and capabilities. Building a system that handles role-based access while maintaining a smooth user experience presents interesting technical challenges.",
       approach:
-        "Built a full-stack application using React.js for the frontend and Node.js with Express.js for the backend. Used MongoDB for data storage with role-based access control implemented across the stack.",
+        "Creators link YouTube with OAuth2 and create an access key. Editors use that key to upload videos without seeing account credentials.",
       contribution:
-        "Developed the full-stack application including frontend components, backend API, database schema design, and role-based access control system.",
+        "Built the Node.js, Express.js, MongoDB, and HTML/CSS/JavaScript workflow.",
       learned:
-        "Learned about implementing role-based access control, managing content workflows, and building collaborative features in a full-stack application.",
+        "Learned how security and a simple handoff can make creator-editor work faster.",
     },
   },
 ];

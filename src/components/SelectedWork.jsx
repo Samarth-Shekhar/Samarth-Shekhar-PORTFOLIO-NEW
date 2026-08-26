@@ -21,7 +21,7 @@ function SelectedWork({ onProjectClick }) {
 
         {/* Viewport-filling Alternating Projects */}
         <div className="ed-work__list">
-          {projects.slice(0, 3).map((project, idx) => {
+          {projects.map((project, idx) => {
             const isEven = idx % 2 === 0
             const visualType = getVisualType(project.id)
 
@@ -35,7 +35,7 @@ function SelectedWork({ onProjectClick }) {
                   {/* Visual Side */}
                   <div className="ed-project-row__visual">
                     <div className="visual-wrapper">
-                      <ProjectVisual type={visualType} />
+                                <ProjectVisual type={visualType} image={project.image} />
                       <div className="visual-overlay-tag">// 0{idx + 1} PROJECT</div>
                     </div>
                   </div>

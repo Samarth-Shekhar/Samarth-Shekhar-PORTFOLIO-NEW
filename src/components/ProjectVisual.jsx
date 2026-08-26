@@ -2,6 +2,7 @@ function ProjectVisual({ type }) {
   if (type === 'multi-agent') {
     return (
       <div className="project-visual project-visual--agent">
+        <img className="visual-photo" src={image} alt="Analytics interface for the multi-agent workflow" />
         <div className="project-visual__window">
           <div className="project-visual__bar">
             <span className="dot red"></span>
@@ -47,6 +48,7 @@ function ProjectVisual({ type }) {
   if (type === 'folate') {
     return (
       <div className="project-visual project-visual--folate">
+        <img className="visual-photo" src={image} alt="Editorial web interface design detail" />
         <div className="project-visual__browser">
           <div className="project-visual__browser-bar">
             <div className="browser-dots">
@@ -98,6 +100,7 @@ function ProjectVisual({ type }) {
   if (type === 'meal-planner') {
     return (
       <div className="project-visual project-visual--meal">
+        <img className="visual-photo" src={image} alt="Fresh ingredients prepared for a meal plan" />
         <div className="project-visual__ui">
           <div className="meal-header">
             <span className="meal-title">🥗 AI Meal Planner & Recipe Generator</span>
@@ -130,6 +133,7 @@ function ProjectVisual({ type }) {
 
   return (
     <div className="project-visual project-visual--default">
+      <img className="visual-photo" src={image} alt="Video editing suite for creator collaboration" />
       <div className="project-visual__ui">
         <div className="video-header">
           <span className="video-logo">🎥 Video Sharing Platform</span>

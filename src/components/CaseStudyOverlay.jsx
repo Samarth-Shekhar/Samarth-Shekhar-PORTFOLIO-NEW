@@ -44,7 +44,7 @@ function CaseStudyOverlay({ project, onClose }) {
 
           {/* Visual Showcase */}
           <div className="overlay-visual">
-            <ProjectVisual type={getVisualType(project.id)} />
+            <ProjectVisual type={getVisualType(project.id)} image={project.image} />
           </div>
 
           {/* Editorial Specs Grid */}
