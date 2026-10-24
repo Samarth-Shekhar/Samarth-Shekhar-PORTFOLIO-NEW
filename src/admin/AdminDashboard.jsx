@@ -634,6 +634,18 @@ export default function AdminDashboard() {
                           <td>
                             <strong>{p.title}</strong>
                             <div style={{ fontSize: 12, color: 'var(--admin-muted)' }}>{p.subtitle}</div>
+                            <div style={{ fontSize: 11, marginTop: 4, display: 'flex', gap: 10 }}>
+                              {p.liveDemo && (
+                                <a href={p.liveDemo} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--admin-primary, #4ade80)', textDecoration: 'none' }}>
+                                  Live Build ↗
+                                </a>
+                              )}
+                              {p.github && (
+                                <a href={p.github} target="_blank" rel="noopener noreferrer" style={{ color: '#94a3b8', textDecoration: 'none' }}>
+                                  Repo ↗
+                                </a>
+                              )}
+                            </div>
                           </td>
                           <td>{p.category}</td>
                           <td>{p.year}</td>

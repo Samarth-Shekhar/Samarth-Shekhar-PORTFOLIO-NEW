@@ -99,7 +99,7 @@ export const projects = [
       { label: "Prototyping Time Saved", value: "65%" },
     ],
     github: "https://github.com/Samarth-Shekhar/folate",
-    liveDemo: "http://folate.pro",
+    liveDemo: "https://folate.pro/",
     image: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1400&q=85",
     previewImage: "/project-previews/folate-landing-page.png",
     caseStudy: {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { trackEvent } from '../utils/analytics.js'
 
 const DEFAULT_NAV_LINKS = [
@@ -35,12 +35,50 @@ function NavMark() {
 
 function Navbar({ settings = {}, customSections = [] }) {
   const [scrolled, setScrolled] = useState(false)
+  const [scrollProgress, setScrollProgress] = useState(0)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('')
+  const observerRef = useRef(null)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
+    const onScroll = () => {
+      setScrolled(window.scrollY > 20)
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight
+      if (docHeight > 0) {
+        setScrollProgress(Math.min(100, Math.max(0, (window.scrollY / docHeight) * 100)))
+      }
+    }
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  // Active section tracking via IntersectionObserver
+  useEffect(() => {
+    const sectionIds = ['about', 'projects', 'experience', 'certifications', 'education', 'skills', 'faq', 'contact']
+    const entries = new Map()
+
+    observerRef.current = new IntersectionObserver(
+      (observed) => {
+        observed.forEach((entry) => {
+          entries.set(entry.target.id, entry.intersectionRatio)
+        })
+        // Find the section with the highest visibility
+        let best = ''
+        let bestRatio = 0
+        entries.forEach((ratio, id) => {
+          if (ratio > bestRatio) { bestRatio = ratio; best = id }
+        })
+        if (best) setActiveSection(best)
+      },
+      { threshold: [0, 0.15, 0.3, 0.5], rootMargin: '-60px 0px -35% 0px' }
+    )
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id)
+      if (el) observerRef.current.observe(el)
+    })
+
+    return () => { if (observerRef.current) observerRef.current.disconnect() }
   }, [])
 
   useEffect(() => {
@@ -112,6 +150,12 @@ function Navbar({ settings = {}, customSections = [] }) {
 
   return (
     <nav className={`nav${scrolled ? ' nav--scrolled' : ''}`} aria-label="Main navigation">
+      {/* Slim Scroll Progress Indicator */}
+      <div
+        className="nav__progress"
+        style={{ width: `${scrollProgress}%` }}
+        aria-hidden="true"
+      />
       <div className="nav__inner">
         <a href="#about" className="nav__brand" onClick={(event) => scrollTo(event, 'about')} aria-label="Samarth Shekhar home">
           <NavMark />
@@ -126,7 +170,7 @@ function Navbar({ settings = {}, customSections = [] }) {
             <a
               key={link.label}
               href={link.href ?? `#${link.id}`}
-              className="nav__link"
+              className={`nav__link${activeSection === link.id ? ' nav__link--active' : ''}`}
               onClick={link.id ? (event) => scrollTo(event, link.id) : undefined}
               target={link.href ? '_blank' : undefined}
               rel={link.href ? 'noopener noreferrer' : undefined}
@@ -175,10 +219,11 @@ function Navbar({ settings = {}, customSections = [] }) {
           <a
             key={link.label}
             href={link.href ?? `#${link.id}`}
-            className="nav__drawer-link"
+            className={`nav__drawer-link${activeSection === link.id ? ' nav__drawer-link--active' : ''}`}
             onClick={link.id ? (event) => scrollTo(event, link.id) : undefined}
             target={link.href ? '_blank' : undefined}
             rel={link.href ? 'noopener noreferrer' : undefined}
+            style={{ '--i': index }}
           >
             {link.label}
             <span>0{index + 1}</span>

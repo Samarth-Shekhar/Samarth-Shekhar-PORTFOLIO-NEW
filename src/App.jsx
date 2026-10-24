@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './styles.css'
+import IntroLoader from './components/IntroLoader.jsx'
 import Navbar from './components/Navbar.jsx'
 import Hero from './components/Hero.jsx'
 import Stats from './components/Stats.jsx'
@@ -25,6 +26,20 @@ function PublicPortfolio() {
   const [selectedProjectId, setSelectedProjectId] = useState(null)
 
   useEffect(() => {
+    // 0. Ensure page always lands at the top / home page on refresh or initial load
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual'
+    }
+    if (window.location.hash) {
+      window.history.replaceState(null, '', window.location.pathname)
+    }
+    window.scrollTo(0, 0)
+
+    const handleBeforeUnload = () => {
+      window.scrollTo(0, 0)
+    }
+    window.addEventListener('beforeunload', handleBeforeUnload)
+
     // 1. Initialize visitor tracking
     initAnalytics()
 
@@ -59,7 +74,11 @@ function PublicPortfolio() {
       { threshold: 0.05, rootMargin: '0px 0px -40px 0px' }
     )
     document.querySelectorAll('.reveal,.reveal-left,.reveal-up').forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload)
+      observer.disconnect()
+    }
   }, [])
 
   const handleSelectProject = (projectId) => {
@@ -86,6 +105,7 @@ function PublicPortfolio() {
 
   return (
     <div>
+      <IntroLoader />
       <Navbar settings={settings} customSections={customSections} />
       <main>
         <Hero settings={settings} projects={projects} onSelectProject={handleSelectProject} />

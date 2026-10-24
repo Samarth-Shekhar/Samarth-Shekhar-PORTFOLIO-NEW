@@ -148,22 +148,48 @@ function ProjectDetails({ project }) {
         )}
 
         <div className="project-detail__actions">
-          {project.liveDemo && <a className="btn btn--primary" href={project.liveDemo} target="_blank" rel="noopener noreferrer">{isWebsiteProject ? 'Live Website ↗' : 'View live build ↗'}</a>}
-          {project.github && <a className="btn btn--ghost-cream" href={project.github} target="_blank" rel="noopener noreferrer">{isWebsiteProject ? 'GitHub Repository ↗' : 'Explore repository ↗'}</a>}
+          {project.liveDemo && (
+            <a
+              className="btn btn--primary"
+              href={project.liveDemo}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${project.title} live preview (opens in a new tab)`}
+            >
+              <span>{isWebsiteProject ? 'Live Website' : 'View live build'}</span>
+              <span className="btn__arrow" aria-hidden="true">↗</span>
+            </a>
+          )}
+          {project.github && (
+            <a
+              className="btn btn--ghost-cream"
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${project.title} source code repository (opens in a new tab)`}
+            >
+              <span>Explore repository</span>
+              <span className="btn__arrow" aria-hidden="true">↗</span>
+            </a>
+          )}
         </div>
       </div>
 
       <div className="project-expanded-visual">
         <img
           src={previewImage}
-          alt={`${project.title} project preview`}
+          alt={`${project.title} project preview showcase`}
+          loading="lazy"
           onError={(e) => {
             if (project.image && e.currentTarget.src !== project.image) {
               e.currentTarget.src = project.image
             }
           }}
         />
-        <div className="project-expanded-visual__caption"><span>PROJECT PREVIEW</span><span>0{project.id} / {project.year}</span></div>
+        <div className="project-expanded-visual__caption">
+          <span>PROJECT PREVIEW</span>
+          <span>0{project.id} // {project.year}</span>
+        </div>
       </div>
     </div>
   )
@@ -203,6 +229,7 @@ function CaseStudies({ projects = defaultProjects, selectedProjectId, onSelectPr
               <article key={project.id} id={`project-card-${project.id}`} className={`project-accordion__item project-accordion__item--${project.id}${isOpen ? ' is-open' : ''}`}>
                 <button
                   type="button"
+                  id={`project-trigger-${project.id}`}
                   className="project-accordion__trigger"
                   onClick={() => toggleProject(project.id)}
                   aria-expanded={isOpen}
@@ -231,7 +258,13 @@ function CaseStudies({ projects = defaultProjects, selectedProjectId, onSelectPr
                 </button>
 
                 {isOpen && (
-                  <div id={`project-panel-${project.id}`} className="project-accordion__content" aria-hidden={false}>
+                  <div
+                    id={`project-panel-${project.id}`}
+                    role="region"
+                    aria-labelledby={`project-trigger-${project.id}`}
+                    className="project-accordion__content"
+                    aria-hidden={false}
+                  >
                     <ProjectDetails project={project} />
                   </div>
                 )}
