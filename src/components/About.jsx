@@ -1,39 +1,64 @@
+const domains = [
+  { num: '01', name: 'Software Development' },
+  { num: '02', name: 'AI & GenAI'           },
+  { num: '03', name: 'Data'                 },
+  { num: '04', name: 'Product'              },
+]
+
 function About() {
-  const exploringItems = [
-    'Software',
-    'AI / GenAI',
-    'Full Stack',
-    'Data',
-    'Product',
-  ]
-
   return (
-    <section id="about" className="ed-about section" aria-labelledby="about-heading">
-      <div className="ed-about__container">
-        {/* Editorial Section Number */}
-        <div className="ed-section-num reveal-on-scroll">01</div>
+    <section id="about" className="section" aria-labelledby="about-heading">
+      <div className="container">
+        {/* Section header */}
+        <div className="section-header reveal">
+          <div className="section-header__top">
+            <div className="section-header__num-title">
+              <span className="section-header__num">01</span>
+              <h2 id="about-heading" className="section-title">About</h2>
+            </div>
+            <span className="label">Background</span>
+          </div>
+        </div>
 
-        <div className="ed-about__grid">
-          <div className="ed-about__main reveal-on-scroll">
-            <span className="ed-about__label">A LITTLE ABOUT ME</span>
-            <h2 id="about-heading" className="ed-about__headline">
-              "I like building things that sit somewhere between technology and people."
-            </h2>
-            <p className="ed-about__text">
-              I'm a B.Tech IT graduate with experience across frontend development, AI automation, technical projects, data workflows and Agile execution.
+        {/* Two-column editorial grid */}
+        <div className="about__grid">
+          {/* Left — main copy */}
+          <div className="about__body reveal reveal-delay-1">
+            <h3 className="about__headline">
+              "I like building things that sit between <em>technology</em> and people."
+            </h3>
+
+            <p className="about__text about__text--bordered">
+              I'm a B.Tech Information Technology graduate from Amity University, Noida. I enjoy
+              working at the intersection of software engineering, AI applications, and product
+              thinking — understanding the problem first, then building something practical.
+            </p>
+
+            <p className="about__text">
+              Over the course of my degree, I've worked on AI-powered platforms, multi-agent
+              orchestration systems, full-stack web applications, and data workflows. I've
+              interned across AI automation, frontend development, IT operations, and
+              software engineering — giving me broad exposure to how real teams build and ship.
+            </p>
+
+            <p className="about__text">
+              I'm drawn to projects where the technical and the practical intersect — where
+              understanding the problem is just as important as knowing the right tool.
             </p>
           </div>
 
-          <div className="ed-about__side reveal-on-scroll">
-            <span className="side-title">CURRENTLY EXPLORING</span>
-            <ul className="exploring-list">
-              {exploringItems.map((item, idx) => (
-                <li key={item} className="exploring-item">
-                  <span className="item-num">0{idx + 1}</span>
-                  <span className="item-name">{item}</span>
-                </li>
+          {/* Right — domain list */}
+          <div className="about__side reveal reveal-delay-2">
+            <span className="about__side-title">Areas I work across</span>
+            <div className="about__domains">
+              {domains.map((d) => (
+                <div key={d.num} className="about__domain-item">
+                  <span className="about__domain-num">{d.num}</span>
+                  <span className="about__domain-name">{d.name}</span>
+                  <span className="about__domain-arrow" aria-hidden="true">↗</span>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       </div>

@@ -1,0 +1,38 @@
+export const activities = [
+  {
+    id: 1,
+    role: 'Freelance Web Scraping Intern',
+    company: 'PepeLeads',
+    duration: 'Feb 2026 – Mar 2026',
+    startDate: '2026-02',
+    endDate: '2026-03',
+    description: 'Built a tool to automate Instagram comment and email data collection using hashtag- and keyword-based searches.',
+  },
+  {
+    id: 2,
+    role: 'Intern',
+    company: 'Agirva Space Community',
+    duration: 'Jan 2025 – Feb 2025',
+    startDate: '2025-01',
+    endDate: '2025-02',
+    description: 'Contributed to space-related tasks and engaged with community members to deepen my understanding of the field.',
+  },
+  {
+    id: 3,
+    role: 'Social Media Marketing Intern',
+    company: 'Zen Solarciti LLC',
+    duration: 'Sep 2023 – Dec 2023',
+    startDate: '2023-09',
+    endDate: '2023-12',
+    description: 'Managed social media content and online engagement for a US-based solar energy company.',
+  },
+  {
+    id: 4,
+    role: 'Volunteer',
+    company: 'Chaupal Foundation',
+    duration: 'Jul 2023 – Oct 2023',
+    startDate: '2023-07',
+    endDate: '2023-10',
+    description: 'Led a team during field activities and helped underprivileged children develop IT-related skills.',
+  },
+]

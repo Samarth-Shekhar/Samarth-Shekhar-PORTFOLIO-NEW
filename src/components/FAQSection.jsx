@@ -1,79 +1,39 @@
 import { useState } from 'react'
+import SectionIcon from './SectionIcon.jsx'
 
-function FAQSection() {
+const defaultFaqs = [
+  { question: 'Are you available for full-time software engineering roles starting in 2026?', answer: 'Yes. I am actively interviewing for full-time Software Developer, AI Engineer, Full-Stack Engineer, and Product roles in Vaishali, Ghaziabad, remotely, or with relocation.' },
+  { question: 'What is your primary technical expertise?', answer: 'I work across full-stack product engineering and agentic AI architecture, using React, Node.js, Python, LangGraph, RAG, FastAPI, Docker, and modern databases.' },
+  { question: 'How does your industry experience inform your approach?', answer: 'My work across AI automation, React engineering, enterprise IT, and digital solutions has taught me to connect clear requirements with reliable implementation and business outcomes.' },
+  { question: 'Can I inspect the source code or test live projects?', answer: 'Yes. My projects include GitHub repositories and live builds where available, including Folate and the AI Meal Planner.' },
+  { question: 'How do you manage projects and requirements?', answer: 'I structure work through user stories, scope and priority discussions, iterative reviews, and clear technical documentation so teams can move confidently.' },
+]
+
+function FAQSection({ faqs: propFaqs }) {
   const [openIndex, setOpenIndex] = useState(0)
-
-  const faqs = [
-    {
-      question: "Are you available for immediate full-time or internship opportunities?",
-      answer:
-        "Yes! As a final-year B.Tech IT student graduating in 2026, I am actively seeking full-time roles, internship opportunities, and collaborative technical projects.",
-    },
-    {
-      question: "What technical roles are you open for?",
-      answer:
-        "I am actively applying for roles across Software Development Engineer (SDE), SDE Intern, Full Stack Developer, Frontend Developer, AI Engineer, Generative AI Developer, Data & Python roles, and Product / Project Management.",
-    },
-    {
-      question: "What is your hands-on experience in AI and Multi-Agent systems?",
-      answer:
-        "I have built multi-agent AI orchestration platforms using LangGraph, FastAPI, Python, RAG, Llama, and Pydantic. My experience includes designing Planner, Retriever, Executor, and Evaluator agents, managing shared context, and deploying containerized workflows.",
-    },
-    {
-      question: "How do you combine Full-Stack development with Product thinking?",
-      answer:
-        "I approach software by first understanding the core user problem and requirement scope. From there, I structure backlog tasks (MoSCoW prioritization, User Stories) and build performant frontend interfaces in React.js/Next.js backed by robust REST APIs and database schemas.",
-    },
-    {
-      question: "What was your responsibility across your 4 internships?",
-      answer:
-        "My internships include AI & Automation at Marksman Technologies, React.js development at Celebal Technologies, IT Operations & Data workflows at Airports Authority of India, and Software Development at Essentia — gaining experience in SDLC, API integration, debugging, and cross-functional coordination.",
-    },
-    {
-      question: "What tech stack and tools do you work with daily?",
-      answer:
-        "Frontend: React.js, Next.js, JavaScript, HTML, CSS, Tailwind CSS. Backend & Database: Node.js, Express.js, FastAPI, REST APIs, MongoDB, Firebase, SQL. AI & Data: LangChain, LangGraph, Python, Pandas, NumPy, Prompt Engineering. PM & Tools: JIRA, Notion, Miro, Git, GitHub, Docker.",
-    },
-  ]
+  const list = propFaqs && propFaqs.length > 0 ? propFaqs : defaultFaqs
 
   return (
-    <section className="faq-section section" aria-labelledby="faq-heading">
-      <div className="section__container">
-        <div className="section__header reveal-on-scroll">
-          <div className="section__badge">
-            <span className="section__badge-icon">❓</span>
-            <span className="section__badge-text">FAQ</span>
+    <section id="faq" className="faq-section faq-section--dark" aria-labelledby="faq-heading">
+      <div className="container">
+        <div className="section-badge-header reveal">
+          <div className="section-badge section-badge--dark">
+            <span className="section-badge__icon" aria-hidden="true"><SectionIcon type="faq" /></span>
+            <h2 id="faq-heading" className="section-badge__title">FAQ</h2>
           </div>
-          <h2 id="faq-heading" className="section__title">FREQUENTLY ASKED</h2>
+          <p className="section-desc section-desc--dark">Direct answers on availability, technical focus, working style, and project delivery.</p>
         </div>
 
-        <p className="faq-section__subtitle reveal-on-scroll">
-          Answers to the most common questions about my technical background, capabilities, and availability.
-        </p>
-
-        <div className="faq-section__list reveal-on-scroll">
-          {faqs.map((faq, index) => {
+        <div className="faq-list reveal reveal-delay-1">
+          {list.map((faq, index) => {
             const isOpen = openIndex === index
             return (
-              <div
-                key={index}
-                className={`faq-item ${isOpen ? 'faq-item--open' : ''}`}
-                onClick={() => setOpenIndex(isOpen ? null : index)}
-              >
-                <div className="faq-item__header">
-                  <h3 className="faq-item__question">{faq.question}</h3>
-                  <button
-                    className={`faq-item__pill-btn ${isOpen ? 'faq-item__pill-btn--open' : ''}`}
-                    aria-label={isOpen ? 'Collapse answer' : 'Expand answer'}
-                  >
-                    <span>{isOpen ? 'Collapse −' : 'Expand +'}</span>
-                  </button>
-                </div>
-                {isOpen && (
-                  <div className="faq-item__body">
-                    <p>{faq.answer}</p>
-                  </div>
-                )}
+              <div key={faq.question} className={`faq-item${isOpen ? ' open' : ''}`} data-index={`0${index + 1}`}>
+                <button type="button" className="faq-trigger" onClick={() => setOpenIndex(isOpen ? -1 : index)} aria-expanded={isOpen} aria-controls={`faq-answer-${index}`}>
+                  <span>{faq.question}</span>
+                  <span className="faq-icon" aria-hidden="true">{isOpen ? 'Collapse ↑' : 'Expand ↓'}</span>
+                </button>
+                {isOpen && <div id={`faq-answer-${index}`} className="faq-content"><div className="faq-content-inner"><p>{faq.answer}</p></div></div>}
               </div>
             )
           })}

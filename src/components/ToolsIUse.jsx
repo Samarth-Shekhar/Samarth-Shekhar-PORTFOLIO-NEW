@@ -1,54 +1,40 @@
-function ToolsIUse() {
-  const categories = [
-    {
-      label: 'FRONTEND',
-      items: ['React.js', 'Next.js', 'JavaScript', 'HTML', 'CSS', 'Tailwind CSS'],
-    },
-    {
-      label: 'BACKEND',
-      items: ['Node.js', 'Express.js', 'FastAPI', 'REST APIs'],
-    },
-    {
-      label: 'AI',
-      items: ['LLMs', 'RAG', 'LangChain', 'LangGraph', 'Llama', 'Pydantic'],
-    },
-    {
-      label: 'DATA',
-      items: ['Python', 'SQL', 'Pandas', 'NumPy'],
-    },
-    {
-      label: 'DATABASE',
-      items: ['MongoDB', 'Firebase'],
-    },
-    {
-      label: 'DEVELOPMENT',
-      items: ['Git', 'GitHub', 'Docker'],
-    },
-  ]
+import SectionIcon from './SectionIcon.jsx'
+
+const defaultSkillGroups = [
+  { name: 'Programming', items: ['Python', 'JavaScript (ES6+)', 'SQL', 'TypeScript basics'] },
+  { name: 'Frontend', items: ['React.js', 'Next.js', 'HTML5 & CSS3', 'Tailwind CSS', 'Responsive UI'] },
+  { name: 'Backend & APIs', items: ['Node.js', 'FastAPI', 'Express.js', 'RESTful API Architecture'] },
+  { name: 'AI & GenAI', items: ['LangGraph', 'LangChain', 'RAG Pipelines', 'Llama-3', 'OpenAI API', 'Pydantic'] },
+  { name: 'Databases & Storage', items: ['MongoDB', 'Firebase', 'SQL / PostgreSQL', 'Vector Stores'] },
+  { name: 'DevOps & Tooling', items: ['Git & GitHub', 'Docker', 'Vite', 'Postman'] },
+  { name: 'Product & Agile', items: ['Agile / Scrum', 'Sprint Planning', 'User Stories & Backlogs', 'SDLC'] },
+  { name: 'Execution Mindset', items: ['Requirement Analysis', 'Architecture Design', 'Technical Documentation'] },
+]
+
+function ToolsIUse({ skills: propSkills }) {
+  const groups = propSkills && propSkills.length > 0 ? propSkills : defaultSkillGroups
 
   return (
-    <section id="skills" className="ed-tools section" aria-labelledby="tools-heading">
-      <div className="section__container">
-        <div className="ed-section-num reveal-on-scroll">04</div>
-        <div className="ed-tools__header reveal-on-scroll">
-          <span className="ed-section-label">TECHNICAL STACK</span>
-          <h2 id="tools-heading" className="ed-section-title">TOOLS I USE</h2>
+    <section id="skills" className="skills" aria-labelledby="skills-heading">
+      <div className="container">
+        <div className="section-badge-header reveal">
+          <div className="section-badge section-badge--light">
+            <span className="section-badge__icon" aria-hidden="true"><SectionIcon type="skills" /></span>
+            <h2 id="skills-heading" className="section-badge__title">SKILLS</h2>
+          </div>
+          <p className="section-desc">The tools I use to turn product ideas into considered, reliable digital experiences.</p>
         </div>
-
-        <div className="ed-tools__grid reveal-on-scroll">
-          {categories.map((cat) => (
-            <div key={cat.label} className="ed-tools-row">
-              <span className="cat-label">{cat.label}</span>
-              <div className="cat-items">
-                {cat.items.map((tool, idx) => (
-                  <span key={tool} className="tool-text">
-                    {tool}
-                    {idx < cat.items.length - 1 && <span className="sep">&bull;</span>}
-                  </span>
-                ))}
+        <div className="skills__grid reveal reveal-delay-1">
+          {groups.map((group) => {
+            const name = group.category || group.name
+            const items = Array.isArray(group.items) ? group.items : []
+            return (
+              <div key={name} className="skill-group">
+                <div className="skill-group__name">{name}</div>
+                <ul className="skill-list">{items.map((item) => <li key={item} className="skill-item">{item}</li>)}</ul>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>
